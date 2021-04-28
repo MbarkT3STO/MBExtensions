@@ -18,7 +18,6 @@ namespace MBExtensions.Extensions.Files
         public static async Task<byte[]> ToBytesAsync( this IFormFile file )
         {
             var stream = new MemoryStream();
-
             await file.CopyToAsync( stream );
 
             return stream.ToArray();
