@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MBExtensions.Extensions.Files
 {
+    /// <summary>
+    /// Responsible on <see cref="IFormFile"/>
+    /// </summary>
     public static class FormFileExtensions
     {
         /// <summary>
