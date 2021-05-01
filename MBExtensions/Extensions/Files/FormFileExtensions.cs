@@ -25,5 +25,12 @@ namespace MBExtensions.Extensions.Files
 
             return stream.ToArray();
         }
+
+        /// <summary>
+        /// Check if an <see cref="IFormFile"/> has no content
+        /// </summary>
+        /// <param name="file">File to be checked</param>
+        /// <returns><see cref="bool"/></returns>
+        public static bool IsNull( this IFormFile file ) => file == null;
     }
 }
