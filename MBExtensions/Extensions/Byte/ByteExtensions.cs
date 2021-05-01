@@ -11,5 +11,13 @@ namespace MBExtensions.Extensions.Byte
         /// <param name="bytes">Bytes to be converted</param>
         /// <returns><see cref="Task{TResult}"/></returns>
         public static Task<string> ToBase64Async( this byte[] bytes ) => Task.Factory.StartNew( () => Convert.ToBase64String( bytes ) );
+
+        /// <summary>
+        /// Check if a <see cref="byte"/> array if null or empty
+        /// </summary>
+        /// <param name="bytes">Bytes array to be checked</param>
+        /// <returns><see cref="Task{TResult}"/></returns>
+        public static Task<bool> IsNullOrEmptyAsync( this byte[] bytes ) =>
+            Task.Factory.StartNew( () => bytes == null || bytes.Length == 0 );
     }
 }
