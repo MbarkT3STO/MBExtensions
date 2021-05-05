@@ -32,5 +32,12 @@ namespace MBExtensions.Extensions.Files
         /// <param name="file">File to be checked</param>
         /// <returns><see cref="bool"/></returns>
         public static bool IsNull( this IFormFile file ) => file == null;
+
+        /// <summary>
+        /// Check if an <see cref="IFormFile"/> has a content
+        /// </summary>
+        /// <param name="file">File to be checked</param>
+        /// <returns><see cref="bool"/></returns>
+        public static bool IsNotNull( this IFormFile file ) => file != null;
     }
 }
