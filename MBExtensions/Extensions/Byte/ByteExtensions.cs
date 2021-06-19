@@ -17,7 +17,13 @@ namespace MBExtensions.Extensions.Byte
         /// </summary>
         /// <param name="bytes">Bytes array to be checked</param>
         /// <returns><see cref="Task{TResult}"/></returns>
-        public static Task<bool> IsNullOrEmptyAsync( this byte[] bytes ) =>
-            Task.Factory.StartNew( () => bytes == null || bytes.Length == 0 );
+        public static Task<bool> IsNullOrEmptyAsync( this byte[] bytes ) => Task.Factory.StartNew( () => bytes == null || bytes.Length == 0 );
+
+        /// <summary>
+        /// Check if a <see cref="byte"/> array if not null or empty
+        /// </summary>
+        /// <param name="bytes">Bytes array to be checked</param>
+        /// <returns><see cref="Task{TResult}"/></returns>
+        public static Task<bool> IsNotNullOrEmptyAsync( this byte[] bytes ) => Task.Factory.StartNew( () => bytes != null && bytes.Length > 0 );
     }
 }
