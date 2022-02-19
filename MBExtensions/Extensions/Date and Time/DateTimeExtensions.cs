@@ -47,9 +47,9 @@ namespace MBExtensions.Extensions.Date_and_Time
         #region For a specific country
 
         /// <summary>
-        /// Convert a <see cref="DateTime"/> to his equivalent Moroccan date and time
+        /// Convert a <see cref="DateTime"/> to its Moroccan equivalent date and time
         /// </summary>
-        /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
+        /// <param name="datetime"><see cref="DateTime"/> to be converted</param>
         /// <returns><see cref="DateTime"/></returns>
         public static DateTime InMorocco(this DateTime datetime)
         {
@@ -57,6 +57,53 @@ namespace MBExtensions.Extensions.Date_and_Time
             DateTimeOffset moroccanLocalTime= TimeZoneInfo.ConvertTime(datetime, moroccoTimeZoneInfo);
 
             return moroccanLocalTime.DateTime;
+        }
+
+        #endregion
+
+        #region Get specific dates
+
+        /// <summary>
+        /// Get the last day/date of the current <see cref="DateTime"/>
+        /// </summary>
+        /// <param name="datetime"><see cref="DateTime"/> value</param>
+        public static DateTime GetFirstDayOfTheWeek(this DateTime datetime)
+        {
+            return datetime.AddDays(-(int)datetime.DayOfWeek);
+        }
+
+        /// <summary>
+        /// Get the last day/date of the current <see cref="DateTime"/>
+        /// </summary>
+        /// <param name="datetime"><see cref="DateTime"/> value</param>
+        public static DateTime GetLastDayOfTheWeek(this DateTime datetime)
+        {
+            return datetime.AddDays(6 - (int)datetime.DayOfWeek);
+        }
+
+        /// <summary>
+        /// Get the first day/date of the previous <see cref="DateTime"/> week 
+        /// </summary>
+        /// <param name="datetime"><see cref="DateTime"/> value</param>
+        public static DateTime GetFirstDayOfThePreviousWeek(this DateTime datetime)
+        {
+            var firstDayOfCurrentWeek     = datetime.AddDays(-(int)datetime.DayOfWeek);
+            var lastDayOfThePreviousWeek  = firstDayOfCurrentWeek.AddDays(-1);
+            var firstDayOfThePreviousWeek = lastDayOfThePreviousWeek.AddDays(-(int)lastDayOfThePreviousWeek.DayOfWeek);
+
+            return firstDayOfThePreviousWeek;
+        }
+
+        /// <summary>
+        /// Get the last day/date of the previous <see cref="DateTime"/> week 
+        /// </summary>
+        /// <param name="datetime"><see cref="DateTime"/> value</param>
+        public static DateTime GetLastDayOfThePreviousWeek(this DateTime datetime)
+        {
+            var firstDayOfCurrentWeek    = datetime.AddDays(-(int)datetime.DayOfWeek);
+            var lastDayOfThePreviousWeek = firstDayOfCurrentWeek.AddDays(-1);
+
+            return lastDayOfThePreviousWeek;
         }
 
         #endregion
