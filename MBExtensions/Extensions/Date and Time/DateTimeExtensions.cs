@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using MBExtensions.Extensions.Enums;
 
 namespace MBExtensions.Extensions.Date_and_Time
 {
@@ -119,6 +120,20 @@ namespace MBExtensions.Extensions.Date_and_Time
         public static string GetWeekDay(this DateTime dateTime, CultureInfo cultureInfo)
         {
             var result = dateTime.ToString( "dddd" , cultureInfo );
+
+            return result;
+        }
+        
+        /// <summary>
+        /// Get name of the day
+        /// </summary>
+        /// <param name="dateTime">Date to get name of the day from</param>
+        /// <param name="culture">Culture code</param>
+        /// <returns></returns>
+        public static string GetWeekDay(this DateTime dateTime, Culture culture)
+        {
+            var cultureAsString = culture.ToString().Replace( "_" , "-" );
+            var result          = dateTime.ToString( "dddd" , new CultureInfo( cultureAsString ) );
 
             return result;
         }
