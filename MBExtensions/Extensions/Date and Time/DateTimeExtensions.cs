@@ -107,5 +107,22 @@ namespace MBExtensions.Extensions.Date_and_Time
         }
 
         #endregion
+
+        #region Days
+
+        /// <summary>
+        /// Get name of the day
+        /// </summary>
+        /// <param name="dateTime">Date to get name of the day from</param>
+        /// <param name="cultureInfo">Culture</param>
+        /// <returns></returns>
+        public static string GetWeekDay(this DateTime dateTime, CultureInfo cultureInfo)
+        {
+            var result = dateTime.ToString( "dddd" , cultureInfo );
+
+            return result;
+        }
+
+        #endregion
     }
 }
