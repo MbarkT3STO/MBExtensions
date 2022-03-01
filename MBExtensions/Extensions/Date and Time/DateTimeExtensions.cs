@@ -10,6 +10,19 @@ namespace MBExtensions.Extensions.Date_and_Time
         #region To a specific format
 
         /// <summary>
+        /// Convert a <see cref="DateTime"/> to a specific <b>culture</b> date format
+        /// </summary>
+        /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
+        /// <param name="culture">Culture code</param>
+        /// <returns><see cref="string"/></returns>
+        public static string ToStringDate(this DateTime dateTime, Culture culture)
+        {
+            var cultureAsString = culture.ToString().Replace( "_" , "-" );
+
+            return dateTime.ToString( new CultureInfo( cultureAsString ) );
+        }
+
+        /// <summary>
         /// Convert a <see cref="DateTime"/> to French date
         /// </summary>
         /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
@@ -28,6 +41,7 @@ namespace MBExtensions.Extensions.Date_and_Time
         {
             return dateTime.ToString("dd/MM/yyyy hh:mm tt", new CultureInfo("fr-MA"));
         }
+
 
         #endregion
 
