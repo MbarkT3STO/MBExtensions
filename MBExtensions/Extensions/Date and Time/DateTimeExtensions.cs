@@ -18,8 +18,9 @@ namespace MBExtensions.Extensions.Date_and_Time
         public static string ToStringDate(this DateTime dateTime, Culture culture)
         {
             var cultureAsString = culture.ToString().Replace( "_" , "-" );
+            var dateOnly        = new DateOnly( dateTime.Year , dateTime.Month , dateTime.Day );
 
-            return dateTime.ToString( new CultureInfo( cultureAsString ) );
+            return dateOnly.ToString( new CultureInfo( cultureAsString ) );
         }
 
         /// <summary>
