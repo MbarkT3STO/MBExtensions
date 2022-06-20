@@ -1,6 +1,6 @@
 ﻿namespace MBExtensions.Extensions.String
 {
-    public class StringExtensionsForEmail
+    public static class StringExtensionsForEmail
     {
         /// <summary>
         /// Checks if a string is a valid email
