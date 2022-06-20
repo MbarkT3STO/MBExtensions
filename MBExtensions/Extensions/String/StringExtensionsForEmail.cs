@@ -1,4 +1,6 @@
-﻿namespace MBExtensions.Extensions.String
+﻿using System.Text.RegularExpressions;
+
+namespace MBExtensions.Extensions.String
 {
     public static class StringExtensionsForEmail
     {
