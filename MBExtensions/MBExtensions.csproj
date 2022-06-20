@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Extensions\Decimal\Enums\" />
+    <Folder Include="Extensions\String\" />
   </ItemGroup>
 
   <ItemGroup>
