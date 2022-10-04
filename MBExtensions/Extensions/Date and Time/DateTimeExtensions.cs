@@ -44,19 +44,55 @@ namespace MBExtensions.Extensions.Date_and_Time
         }
 
 
+        /// <summary>
+        /// Convert a <see cref="DateTime"/> to a specific <b>culture</b> date format
+        /// </summary>
+        /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
+        /// <param name="culture">Culture code</param>
+        /// <returns><see cref="string"/></returns>
+        public static string ToStringDate(this DateTime? dateTime, Culture culture)
+        {
+            var convertedDateTime = DateTime.Parse( dateTime.ToString() );
+            var cultureAsString   = culture.ToString().Replace("_", "-");
+            var dateOnly          = new DateOnly(convertedDateTime.Year, convertedDateTime.Month, convertedDateTime.Day);
+
+            
+            return dateOnly.ToString( new CultureInfo( cultureAsString ) );
+        }
+
+        /// <summary>
+        /// Convert a <see cref="DateTime"/> to French date
+        /// </summary>
+        /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
+        /// <returns><see cref="string"/></returns>
+        public static string ToFrenchDateString(this DateTime? dateTime)
+        {
+            return dateTime?.ToString("dd/MM/yyyy", new CultureInfo("fr-MA"));
+        }
+
+        /// <summary>
+        /// Convert a <see cref="DateTime"/> to French date with time
+        /// </summary>
+        /// <param name="dateTime"><see cref="DateTime"/> to be converted</param>
+        /// <returns><see cref="string"/></returns>
+        public static string ToFrenchDateTimeString(this DateTime? dateTime)
+        {
+            return dateTime?.ToString("dd/MM/yyyy hh:mm tt", new CultureInfo("fr-MA"));
+        }
+
         #endregion
 
         #region Convertion
 
-        /// <summary>
-        /// Convert a <see cref="TimeSpan"/> to a simple string time
-        /// </summary>
-        /// <param name="timeSpan"><see cref="TimeSpan"/> to be converted</param>
-        /// <returns><see cref="string"/></returns>
-        public static string ToTimeString(this TimeSpan timeSpan)
-        {
-            return new DateTime(timeSpan.Ticks).ToString("hh:mm tt");
-        }
+        // /// <summary>
+        // /// Convert a <see cref="TimeSpan"/> to a simple string time
+        // /// </summary>
+        // /// <param name="timeSpan"><see cref="TimeSpan"/> to be converted</param>
+        // /// <returns><see cref="string"/></returns>
+        // public static string ToTimeString(this System.TimeSpan timeSpan)
+        // {
+        //     return new DateTime(timeSpan.Ticks).ToString("hh:mm tt");
+        // }
 
         #endregion
 
